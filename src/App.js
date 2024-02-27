@@ -1,22 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import './Components/Login';
+import './Components/Principal';
+import Login from './Components/Login';
+import Principal from './Components/Principal';
 
+var x= localStorage.getItem('user');
 function App() {
+
+  let actual;
+  if (x == null) {
+    actual = <Login></Login>;
+  }else
+  {
+    actual = <Principal></Principal>;
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {actual}
       </header>
     </div>
   );
