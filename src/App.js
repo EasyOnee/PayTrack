@@ -4,6 +4,8 @@ import './Components/Login';
 import './Components/Principal';
 import Login from './Components/Login';
 import Principal from './Components/Principal';
+import 'bootstrap/dist/css/bootstrap.min.css';
+ 
 
 var x= localStorage.getItem('user');
 function App() {

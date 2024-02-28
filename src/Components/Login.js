@@ -1,5 +1,8 @@
 import React from "react";
 import axios from 'axios';
+import logouts from '../assets/images/logouts.jpg';
+import Button from 'react-bootstrap/Button';
+
 
 class Login extends React.Component {
   constructor(props) {
@@ -61,34 +64,26 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <table border={1}>
-          <tr>
-            <td colSpan={2}>Login</td>
-          </tr>
-          <tr>
-            <td>User:</td>
-            <td>
-              <input onChange={this.handlerUser} style={{ fontSize: "larger" }} />
-            </td>
-          </tr>
-          <tr>
-            <td>Password:</td>
-            <td>
-              <input onChange={this.handlerPassword} style={{ fontSize: "larger" }} type="password" />
-            </td>
-          </tr>
-          <tr>
-            <td colSpan={2}>
-              <button onClick={this.validateUser} style={{ width: "100%", fontSize: "larger" }}>
-                Accept
-              </button>
-            </td>
-          </tr>
-        </table>
-        <div style={{ color: "red" }}>{this.state.message}</div>
+      <div className="login-container">
+        <div className="logo-container">
+          <img className="logo" src={logouts} alt="logo" />
+        </div>
+        <div className="form-container">
+          <div className="input-container">
+            <input onChange={this.handlerUser} className="input-field" placeholder="Ingrese su Matricula" />
+          </div>
+          <div className="input-container">
+            <input onChange={this.handlerPassword} className="input-field" type="password" placeholder="Ingrese su Contraseña" />
+          </div>
+
+          <button onClick={this.validateUser} className="btn btn-primary btn-lg">
+            Accept
+          </button>
+          <div className="error-message">{this.state.message}</div>
+        </div>
       </div>
     );
+    
   }
 }
 
