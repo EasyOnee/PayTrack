@@ -1,8 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import axios from 'axios';
 import logouts from '../assets/images/logouts.jpg';
-import Button from 'react-bootstrap/Button';
-
+import { Messages } from 'primereact/messages';
 
 class Login extends React.Component {
   constructor(props) {
@@ -10,8 +9,9 @@ class Login extends React.Component {
     this.state = {
       user: "",
       password: "",
-      message: "",
     };
+
+    this.messagesRef = React.createRef();
 
     this.handlerUser = this.handlerUser.bind(this);
     this.handlerPassword = this.handlerPassword.bind(this);
@@ -48,17 +48,17 @@ class Login extends React.Component {
             localStorage.setItem('password', password);
             window.location.reload();
           } else {
-            this.setState({ message: "Contraseña incorrecta." });
+            this.messagesRef.current.show({ severity: 'error', summary: 'Error', detail: 'Contraseña incorrecta.' });
           }
         } else {
-          this.setState({ message: "Usuario no encontrado." });
+          this.messagesRef.current.show({ severity: 'error', summary: 'Error', detail: 'Usuario no encontrado.' });
         }
       } else {
-        this.setState({ message: "Error al obtener datos del servidor." });
+        this.messagesRef.current.show({ severity: 'error', summary: 'Error', detail: 'Error al obtener datos del servidor.' });
       }
     } catch (error) {
       console.error('Error:', error);
-      this.setState({ message: "Error al buscar." });
+      this.messagesRef.current.show({ severity: 'error', summary: 'Error', detail: 'Error al buscar.' });
     }
   }
 
@@ -79,11 +79,12 @@ class Login extends React.Component {
           <button onClick={this.validateUser} className="btn btn-primary btn-lg">
             Accept
           </button>
-          <div className="error-message">{this.state.message}</div>
+        </div>
+        <div>
+        <Messages className="alert" ref={this.messagesRef} />
         </div>
       </div>
     );
-    
   }
 }
 

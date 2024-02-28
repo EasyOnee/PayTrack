@@ -1,4 +1,6 @@
-import React from "react";
+import React from "react";                         
+import { Button } from 'primereact/button';
+
 
 class Principal extends React.Component {
   constructor(props) {
@@ -15,17 +17,11 @@ class Principal extends React.Component {
   render() {
     var user = localStorage.getItem('user');
     var pass = localStorage.getItem('password');
+
+
     return (
       <div>
-        <h1>The BestOne</h1>
-        <h3>User: {user}</h3>
-        <h3>Password: {pass}</h3>
-        <br></br>
-        <div>
-          <button onClick={this.colseSesion} style={{ width: "100%", fontSize: "larger" }}>
-            Exit
-          </button>
-        </div>
+        <Button onClick={this.colseSesion} label="Exit" severity="warning" rounded />
       </div>
     );
   }

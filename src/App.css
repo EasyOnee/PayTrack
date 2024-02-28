@@ -40,11 +40,8 @@
   border: 2px solid #ccc;
 }
 
-
-.error-message {
-  color: red;
-  margin-top: 10px;
-  text-align: center;
+.alert {
+  bottom: 20%;
 }
 
 

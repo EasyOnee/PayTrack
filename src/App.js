@@ -1,11 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
 import './Components/Login';
 import './Components/Principal';
 import Login from './Components/Login';
 import Principal from './Components/Principal';
 import 'bootstrap/dist/css/bootstrap.min.css';
- 
+
+//tema
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+
+//núcleo
+import "primereact/resources/primereact.min.css";
+
+//iconos
+import "primeicons/primeicons.css";
+
+
 
 var x= localStorage.getItem('user');
 function App() {
