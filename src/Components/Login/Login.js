@@ -1,9 +1,10 @@
 import React, { useRef } from "react";
 import axios from 'axios';
-import logouts from '../assets/images/logouts.jpg';
+import logouts from '../../assets/images/logouts.jpg';
 import { Messages } from 'primereact/messages';
+import '../../Components/Login/Login'
 
-class Login extends React.Component {
+export class Login extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,9 +31,7 @@ class Login extends React.Component {
     const { user, password } = this.state;
 
     try {
-      const response = await axios.get(
-        `https://loggin-5d879-default-rtdb.firebaseio.com/LuisCarlosPerzaArballo.json`
-      );
+      const response = await axios.get(`/api/validateUser/${user}`); // Cambiado para llamar al backend
 
       const userData = response.data;
       if (userData) {
@@ -64,7 +63,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="login-container">
+      <div className="login-container App-header App">
         <div className="logo-container">
           <img className="logo" src={logouts} alt="logo" />
         </div>
@@ -76,12 +75,12 @@ class Login extends React.Component {
             <input onChange={this.handlerPassword} className="input-field" type="password" placeholder="Ingrese su Contraseña" />
           </div>
 
-          <button onClick={this.validateUser} className="btn btn-primary btn-lg">
+          <button onClick={this.validateUser} className="btn btn-primary ">
             Accept
           </button>
         </div>
         <div>
-        <Messages className="alert" ref={this.messagesRef} />
+          <Messages className="alert" ref={this.messagesRef} />
         </div>
       </div>
     );

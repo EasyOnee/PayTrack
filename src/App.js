@@ -1,8 +1,8 @@
 import './App.css';
-import './Components/Login';
-import './Components/Principal';
-import Login from './Components/Login';
-import Principal from './Components/Principal';
+import './Components/Login/Login';
+import './Components/Adeudos/Adeudos';
+import Login from './Components/Login/Login';
+import Adeudos from './Components/Adeudos/Adeudos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 //tema
@@ -24,12 +24,12 @@ function App() {
     actual = <Login></Login>;
   }else
   {
-    actual = <Principal></Principal>;
+    actual = <Adeudos></Adeudos>;
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header>
         {actual}
       </header>
     </div>
